@@ -1,0 +1,1164 @@
+
+/* ==========================================
+   1. FONTES
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+
+/* ==========================================
+   2. VARIÁVEIS GLOBAIS
+========================================== */
+
+:root {
+  --ink: #202033;
+  --muted: #85869b;
+  --line: #ececf3;
+
+  /* Azul principal */
+  --purple: #2563eb;
+  --purple-dark: #1d4ed8;
+
+  --bg: #f7f7fb;
+  --green: #159c72;
+  --orange: #d88928;
+
+  --shadow: 0 8px 28px rgba(33, 31, 71, 0.045);
+}
+
+
+/* ==========================================
+   3. RESET E ESTILOS GERAIS
+========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Manrope, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+h1 {
+  font-size: 27px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #8e8da7;
+  margin-bottom: 8px;
+}
+
+.hint {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #9898aa;
+  margin: 17px 0 0;
+}
+
+
+/* ==========================================
+   4. BOTÕES
+========================================== */
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 11px 15px;
+  font-weight: 700;
+  transition: 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.primary {
+  background: var(--purple);
+  color: white;
+  box-shadow: 0 5px 12px #2563eb26;
+}
+
+.primary:hover {
+  background: var(--purple-dark);
+}
+
+.outline {
+  background: white;
+  border-color: #e5e4ef;
+  color: #4b4a63;
+}
+
+.full {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.text-btn {
+  border: 0;
+  background: none;
+  color: var(--purple);
+  font-weight: 700;
+  padding: 5px;
+}
+
+.icon-btn {
+  border: 0;
+  background: #eff4ff;
+  color: #4774c8;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+
+/* ==========================================
+   5. CAMPOS DE FORMULÁRIO
+========================================== */
+
+.auth-card label,
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #34466a;
+  margin-bottom: 17px;
+}
+
+.auth-card input,
+label input,
+label select,
+label textarea {
+  width: 100%;
+  border: 1px solid #e5e5ef;
+  border-radius: 8px;
+  background: white;
+  padding: 12px 13px;
+  color: var(--ink);
+  outline: none;
+}
+
+.auth-card input:focus,
+label input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px #2563eb18;
+}
+
+
+/* ==========================================
+   6. AUTENTICAÇÃO
+========================================== */
+
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+}
+
+.auth-brand {
+  padding: 10vw 8vw;
+  background: linear-gradient(
+    145deg,
+    #172554,
+    #1d4ed8 65%,
+    #60a5fa
+  );
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 17px;
+  background: #ffffff20;
+  border: 1px solid #ffffff48;
+
+  display: grid;
+  place-items: center;
+
+  font: 800 29px Manrope;
+  margin-bottom: 34px;
+}
+
+.auth-brand .eyebrow {
+  color: #dbeafe;
+}
+
+.auth-brand h1 {
+  font-size: clamp(35px, 5vw, 60px);
+  margin-bottom: 14px;
+}
+
+.auth-brand > p:last-child {
+  font-size: 16px;
+  color: #dbeafe;
+  max-width: 330px;
+  line-height: 1.7;
+}
+
+.auth-card {
+  width: min(390px, 80%);
+  align-self: center;
+  justify-self: center;
+}
+
+.auth-card h2 {
+  font-size: 27px;
+}
+
+.auth-card > .muted {
+  margin-bottom: 28px;
+}
+
+.auth-switch {
+  margin-top: 24px;
+  text-align: center;
+  color: #818198;
+}
+
+.auth-switch .text-btn {
+  padding: 0;
+}
+
+
+/* ==========================================
+   7. ESTRUTURA PRINCIPAL
+========================================== */
+
+.app-shell {
+  min-height: 100vh;
+}
+
+
+/* ==========================================
+   8. MENU LATERAL
+========================================== */
+
+.sidebar {
+  width: 238px;
+  background: white;
+  border-right: 1px solid var(--line);
+
+  position: fixed;
+  inset: 0 auto 0 0;
+
+  padding: 26px 17px;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.side-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  font: 800 16px Manrope;
+  padding: 0 10px 38px;
+}
+
+.brand-mark.small {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 11px;
+  background: var(--purple);
+  color: white;
+  font-size: 19px;
+  border: 0;
+}
+
+.nav-label {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  color: #aaa9bb;
+  font-weight: 700;
+  padding: 0 12px;
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #85859a;
+
+  text-align: left;
+  padding: 13px 14px;
+  border-radius: 9px;
+  margin: 3px 0;
+
+  font-weight: 600;
+
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.nav-item span {
+  font-size: 18px;
+  width: 19px;
+  text-align: center;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: #eff6ff;
+  color: var(--purple);
+}
+
+
+/* ==========================================
+   9. USUÁRIO E LOGOUT
+========================================== */
+
+.side-bottom {
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  padding: 20px 2px 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  height: 35px;
+  width: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #dbeafe;
+  color: var(--purple);
+  font-weight: 800;
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.user-meta strong {
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 135px;
+}
+
+.user-meta small {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.logout {
+  border: 0;
+  background: none;
+  color: #9998ad;
+  font-size: 20px;
+}
+
+
+/* ==========================================
+   10. CONTEÚDO E CABEÇALHO
+========================================== */
+
+.main-content {
+  margin-left: 238px;
+  padding: 35px clamp(22px, 4vw, 58px) 20px;
+  max-width: 1700px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 29px;
+}
+
+.topbar .eyebrow {
+  margin-bottom: 6px;
+}
+
+
+/* ==========================================
+   11. BOAS-VINDAS
+========================================== */
+
+.welcome {
+  background: linear-gradient(105deg, #1d4ed8, #60a5fa);
+  border-radius: 16px;
+  padding: 25px 30px;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.welcome h2 {
+  font-size: 25px;
+}
+
+.welcome p:last-child {
+  color: #dbeafe;
+  margin-bottom: 0;
+}
+
+.eyebrow.light {
+  color: #dbeafe;
+}
+
+.welcome-symbol {
+  font: 800 92px Manrope;
+  color: #ffffff20;
+  line-height: 1;
+  padding: 0 28px;
+}
+
+
+/* ==========================================
+   12. INDICADORES DO DASHBOARD
+========================================== */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.stat-card,
+.content-card {
+  background: white;
+  border: 1px solid #efeff5;
+  border-radius: 13px;
+  box-shadow: var(--shadow);
+}
+
+.stat-card {
+  padding: 20px;
+  min-width: 0;
+}
+
+.stat-icon {
+  height: 38px;
+  width: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.violet {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.blue {
+  background: #e9f3ff;
+  color: #4286d4;
+}
+
+.orange {
+  background: #fff3e2;
+  color: #d88928;
+}
+
+.green {
+  background: #e5f8f0;
+  color: #159c72;
+}
+
+.stat-card p {
+  font-size: 12px;
+  color: #818197;
+  margin-bottom: 8px;
+}
+
+.stat-card strong {
+  font: 800 27px Manrope;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card small {
+  display: block;
+  color: #aaa9bb;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+
+/* ==========================================
+   13. CARDS E SEÇÕES
+========================================== */
+
+.content-card {
+  padding: 23px;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.section-heading p {
+  font-size: 12px;
+  margin: 0;
+}
+
+
+/* ==========================================
+   14. PRODUTOS MAIS VENDIDOS
+========================================== */
+
+.top-list {
+  display: grid;
+  gap: 0;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-top: 1px solid #f0f0f5;
+}
+
+.top-row:first-child {
+  border-top: 0;
+}
+
+.rank {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #dbeafe;
+  color: var(--purple);
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 800;
+}
+
+.top-name {
+  flex: 1;
+  font-weight: 700;
+}
+
+.top-name small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.top-qty {
+  font-weight: 800;
+}
+
+
+/* ==========================================
+   15. PÁGINAS E ANIMAÇÕES
+========================================== */
+
+.page {
+  animation: appear 0.18s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0.6;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ==========================================
+   16. BARRA DE FERRAMENTAS
+========================================== */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 21px;
+  gap: 18px;
+}
+
+.toolbar h2 {
+  margin-bottom: 7px;
+}
+
+.toolbar p {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+
+/* ==========================================
+   17. FORMULÁRIO DE PRODUTOS
+========================================== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+}
+
+.span-all {
+  grid-column: 1 / -1;
+}
+
+.form-grid .section-heading {
+  margin-bottom: 12px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+
+/* ==========================================
+   18. TABELAS E PESQUISA
+========================================== */
+
+.table-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 17px;
+  gap: 12px;
+}
+
+.search-input {
+  border: 1px solid #e7e6ef;
+  background: #fbfbfe;
+  border-radius: 8px;
+  padding: 11px 13px;
+  min-width: min(320px, 100%);
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px #2563eb18;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+th {
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9998ad;
+  font-weight: 700;
+  background: #fafafe;
+}
+
+th,
+td {
+  padding: 14px 13px;
+  border-bottom: 1px solid #f0f0f5;
+}
+
+td {
+  font-size: 12px;
+  color: #55556d;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.empty {
+  text-align: center;
+  color: #9b9aad;
+  padding: 28px;
+}
+
+
+/* ==========================================
+   19. CÉLULA DE PRODUTO
+========================================== */
+
+.product-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.product-dot {
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: var(--purple);
+  font-weight: 800;
+}
+
+
+/* ==========================================
+   20. ESTOQUE E AÇÕES
+========================================== */
+
+.pill {
+  padding: 5px 8px;
+  border-radius: 20px;
+  background: #e7f8f0;
+  color: #159c72;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.pill.low {
+  background: #fff2df;
+  color: #c17a1d;
+}
+
+.action-btn {
+  border: 0;
+  background: #eff4ff;
+  color: #2563eb;
+  border-radius: 7px;
+  padding: 7px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.action-btn:hover {
+  background: #dbeafe;
+}
+
+.action-btn.delete {
+  background: #fff0f0;
+  color: #cf5555;
+}
+
+
+/* ==========================================
+   21. ITENS DA VENDA
+========================================== */
+
+.sale-line {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) 100px 100px 34px;
+  gap: 12px;
+  align-items: end;
+  padding: 10px 0;
+}
+
+.sale-line label {
+  margin-bottom: 0;
+}
+
+.sale-line select,
+.sale-line input,
+.sale-bottom select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #e5e5ef;
+  border-radius: 8px;
+  background: white;
+}
+
+.remove-line {
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #ce5656;
+}
+
+
+/* ==========================================
+   22. RESUMO E FINALIZAÇÃO DA VENDA
+========================================== */
+
+.sale-bottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.sale-bottom label {
+  min-width: 160px;
+  margin: 0;
+}
+
+.sale-total {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.sale-total small {
+  color: var(--muted);
+}
+
+.sale-total strong {
+  font: 800 22px Manrope;
+}
+
+
+/* ==========================================
+   23. NOTIFICAÇÕES
+========================================== */
+
+.toast {
+  position: fixed;
+  right: 24px;
+  top: 20px;
+  z-index: 10;
+
+  background: #24223c;
+  color: white;
+
+  padding: 13px 18px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+
+  max-width: 360px;
+}
+
+.toast.error {
+  background: #a83d4b;
+}
+
+
+/* ==========================================
+   24. RODAPÉ
+========================================== */
+
+footer {
+  text-align: center;
+  color: #aaa9bb;
+  font-size: 11px;
+  padding: 20px;
+}
+
+footer span {
+  padding: 0 7px;
+}
+
+
+/* ==========================================
+   25. RESPONSIVIDADE — TABLETS
+========================================== */
+
+@media (max-width: 1050px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sidebar {
+    width: 205px;
+  }
+
+  .main-content {
+    margin-left: 205px;
+    padding: 28px 24px;
+  }
+
+  .sale-bottom {
+    flex-wrap: wrap;
+  }
+
+  .sale-total {
+    margin-left: 0;
+  }
+}
+
+
+/* ==========================================
+   26. RESPONSIVIDADE — CELULARES
+========================================== */
+
+@media (max-width: 700px) {
+
+  /* Autenticação */
+
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-brand {
+    padding: 28px 8vw 22px;
+    min-height: 230px;
+  }
+
+  .brand-mark {
+    margin-bottom: 18px;
+  }
+
+  .auth-brand h1 {
+    font-size: 34px;
+  }
+
+  .auth-brand > p:last-child {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  .auth-card {
+    padding: 36px 0;
+    width: min(390px, 84%);
+  }
+
+
+  /* Menu lateral */
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+
+    padding: 13px;
+    display: block;
+
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .side-brand {
+    padding: 0 5px 12px;
+  }
+
+  .nav-label,
+  .side-bottom {
+    display: none;
+  }
+
+  .sidebar .nav-item {
+    display: inline-flex;
+    padding: 10px;
+    margin: 0 2px;
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .sidebar .nav-item span {
+    font-size: 15px;
+    width: auto;
+  }
+
+
+  /* Conteúdo principal */
+
+  .main-content {
+    margin: 0;
+    padding: 22px 14px;
+  }
+
+  .topbar {
+    margin-bottom: 22px;
+  }
+
+  .topbar h1 {
+    font-size: 23px;
+  }
+
+
+  /* Boas-vindas */
+
+  .welcome {
+    padding: 21px;
+  }
+
+  .welcome-symbol {
+    font-size: 60px;
+    padding: 0;
+  }
+
+
+  /* Indicadores */
+
+  .stats-grid {
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card strong {
+    font-size: 22px;
+  }
+
+  .stat-icon {
+    margin-bottom: 12px;
+  }
+
+
+  /* Cards */
+
+  .content-card {
+    padding: 16px;
+  }
+
+
+  /* Barra de ferramentas */
+
+  .toolbar {
+    align-items: flex-start;
+  }
+
+  .toolbar .btn {
+    white-space: nowrap;
+    padding: 10px;
+    font-size: 11px;
+  }
+
+
+  /* Formulários */
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .span-all {
+    grid-column: auto;
+  }
+
+  .form-grid .section-heading {
+    grid-column: 1;
+  }
+
+
+  /* Itens de venda */
+
+  .sale-line {
+    grid-template-columns: minmax(0, 1fr) 75px 75px 30px;
+    gap: 7px;
+  }
+
+  .sale-line label {
+    font-size: 10px;
+  }
+
+
+  /* Finalização da venda */
+
+  .sale-bottom {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .sale-total {
+    margin: 0;
+  }
+
+
+  /* Pesquisa e tabelas */
+
+  .search-input {
+    min-width: 0;
+    width: 70%;
+  }
+
+  .table-tools {
+    font-size: 11px;
+  }
+}

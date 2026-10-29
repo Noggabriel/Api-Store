@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Moda Store | Painel</title>
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <!-- Notificações -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- ======================================
+       TELA DE AUTENTICAÇÃO
+  ======================================= -->
+  <section id="auth-screen" class="auth-layout">
+
+    <div class="auth-brand">
+      <div class="brand-mark">M</div>
+
+      <h1>Moda Store</h1>
+
+    </div>
+
+    <div class="auth-card">
+      <h2 id="auth-title">Acesse sua conta</h2>
+
+      <p class="muted" id="auth-subtitle">
+        Entre para continuar no painel.
+      </p>
+
+      <!-- Login -->
+      <form id="login-form">
+        <label>
+          E-mail
+          <input
+            name="email"
+            type="email"
+            placeholder="voce@loja.com"
+            required
+          >
+        </label>
+
+        <label>
+          Senha
+          <input
+            name="password"
+            type="password"
+            placeholder="Sua senha"
+            required
+            minlength="6"
+          >
+        </label>
+
+        <button class="btn primary full" type="submit">
+          Entrar
+        </button>
+      </form>
+
+      <!-- Cadastro -->
+      <form id="register-form" class="hidden">
+        <label>
+          Nome
+          <input
+            name="name"
+            placeholder="Seu nome"
+            required
+          >
+        </label>
+
+        <label>
+          E-mail
+          <input
+            name="email"
+            type="email"
+            placeholder="voce@loja.com"
+            required
+          >
+        </label>
+
+        <label>
+          Senha
+          <input
+            name="password"
+            type="password"
+            placeholder="Mínimo de 6 caracteres"
+            required
+            minlength="6"
+          >
+        </label>
+
+        <button class="btn primary full" type="submit">
+          Criar conta
+        </button>
+      </form>
+
+      <!-- Alternar login e cadastro -->
+      <p class="auth-switch">
+        <span id="switch-label">
+          Ainda não tem conta?
+        </span>
+
+        <button
+          id="switch-auth"
+          class="text-btn"
+          type="button"
+        >
+          Cadastre-se
+        </button>
+      </p>
+
+      <p class="hint">
+        O cadastro cria o primeiro usuário da API.
+        Em um ambiente público, restrinja o cadastro.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================
+       APLICAÇÃO PRINCIPAL
+  ======================================= -->
+  <div id="app" class="app-shell hidden">
+
+    <!-- Menu lateral -->
+    <aside class="sidebar">
+
+      <div class="side-brand">
+        <div class="brand-mark small">M</div>
+        <span>Moda Store</span>
+      </div>
+
+      <p class="nav-label">MENU</p>
+
+      <button
+        class="nav-item active"
+        data-page="dashboard"
+      >
+        <span>◫</span>
+        Visão geral
+      </button>
+
+      <button
+        class="nav-item"
+        data-page="products"
+      >
+        <span>▦</span>
+        Produtos e estoque
+      </button>
+
+      <button
+        class="nav-item"
+        data-page="sales"
+      >
+        <span>↗</span>
+        Vendas
+      </button>
+
+      <!-- Usuário conectado -->
+      <div class="side-bottom">
+        <div class="user-avatar">MS</div>
+
+        <div class="user-meta">
+          <strong id="user-email">Funcionário</strong>
+          <small>Conta conectada</small>
+        </div>
+
+        <button
+          id="logout"
+          class="logout"
+          title="Sair"
+        >
+          ↪
+        </button>
+      </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+
+      <!-- Cabeçalho -->
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PAINEL DE CONTROLE</p>
+          <h1 id="page-title">Visão geral</h1>
+        </div>
+
+        <button class="btn outline" id="refresh">
+          ↻ Atualizar
+        </button>
+      </header>
+
+      <!-- ==================================
+           PÁGINA: DASHBOARD
+      =================================== -->
+      <section id="page-dashboard" class="page">
+
+        <!-- Boas-vindas -->
+        <div class="welcome">
+          <div>
+            <p class="eyebrow light">
+              RESUMO DA OPERAÇÃO
+            </p>
+
+            <h2>Olá! 👋</h2>
+
+            <p>
+              Acompanhe os números da sua loja hoje.
+            </p>
+          </div>
+
+          <div class="welcome-symbol">M</div>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="stats-grid">
+
+          <article class="stat-card">
+            <div class="stat-icon violet">▦</div>
+
+            <p>Produtos cadastrados</p>
+            <strong id="stat-products">—</strong>
+
+            <small>Itens no catálogo</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon blue">□</div>
+
+            <p>Unidades em estoque</p>
+            <strong id="stat-stock">—</strong>
+
+            <small>Quantidade disponível</small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon orange">!</div>
+
+            <p>Estoque baixo</p>
+            <strong id="stat-low">—</strong>
+
+            <small>
+              Produtos com até 5 unidades
+            </small>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-icon green">R$</div>
+
+            <p>Faturamento acumulado</p>
+            <strong id="stat-revenue">—</strong>
+
+            <small>Vendas registradas</small>
+          </article>
+        </div>
+
+        <!-- Produtos mais vendidos -->
+        <div class="content-card">
+          <div class="section-heading">
+            <div>
+              <h3>Produtos mais vendidos</h3>
+
+              <p class="muted">
+                Destaques com base nas vendas registradas.
+              </p>
+            </div>
+
+            <button
+              class="text-btn"
+              data-goto="products"
+            >
+              Ver produtos →
+            </button>
+          </div>
+
+          <div id="top-products" class="top-list">
+            <p class="muted">Carregando dados...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================
+           PÁGINA: PRODUTOS E ESTOQUE
+      =================================== -->
+      <section id="page-products" class="page hidden">
+
+        <!-- Cabeçalho da página -->
+        <div class="toolbar">
+          <div>
+            <h2>Produtos e estoque</h2>
+
+            <p class="muted">
+              Cadastre peças e acompanhe as quantidades disponíveis.
+            </p>
+          </div>
+
+          <button
+            id="show-product-form"
+            class="btn primary"
+          >
+            ＋ Novo produto
+          </button>
+        </div>
+
+        <!-- Formulário de produto -->
+        <form
+          id="product-form"
+          class="content-card form-grid hidden"
+        >
+          <div class="section-heading span-all">
+            <div>
+              <h3 id="product-form-title">
+                Cadastrar produto
+              </h3>
+
+              <p class="muted">
+                Cada tamanho e cor deve ter seu próprio cadastro.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="cancel-product"
+              class="icon-btn"
+            >
+              ✕
+            </button>
+          </div>
+
+          <input type="hidden" name="id">
+
+          <label>
+            Nome do produto
+            <input
+              name="name"
+              required
+              placeholder="Ex.: Camiseta básica"
+            >
+          </label>
+
+          <label>
+            Tamanho
+            <input
+              name="size"
+              required
+              placeholder="P, M, G, 38..."
+            >
+          </label>
+
+          <label>
+            Cor
+            <input
+              name="color"
+              required
+              placeholder="Preto"
+            >
+          </label>
+
+          <label>
+            Preço (R$)
+            <input
+              name="price"
+              type="number"
+              min="0.01"
+              step="0.01"
+              required
+              placeholder="59.90"
+            >
+          </label>
+
+          <label>
+            Estoque inicial
+            <input
+              name="stock"
+              type="number"
+              min="0"
+              step="1"
+              required
+              value="0"
+            >
+          </label>
+
+          <label class="span-all">
+            Descrição (opcional)
+            <textarea
+              name="description"
+              rows="2"
+              placeholder="Detalhes do produto"
+            ></textarea>
+          </label>
+
+          <div class="span-all form-actions">
+            <button
+              type="button"
+              id="cancel-product-2"
+              class="btn outline"
+            >
+              Cancelar
+            </button>
+
+            <button
+              class="btn primary"
+              type="submit"
+            >
+              Salvar produto
+            </button>
+          </div>
+        </form>
+
+        <!-- Tabela de produtos -->
+        <div class="content-card">
+          <div class="table-tools">
+            <input
+              id="product-search"
+              class="search-input"
+              placeholder="⌕ Buscar produto..."
+            >
+
+            <span id="product-count" class="muted">
+              0 produtos
+            </span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Tamanho</th>
+                  <th>Cor</th>
+                  <th>Preço</th>
+                  <th>Estoque</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+
+              <tbody id="products-table">
+                <tr>
+                  <td colspan="6" class="empty">
+                    Carregando produtos...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================
+           PÁGINA: VENDAS
+      =================================== -->
+      <section id="page-sales" class="page hidden">
+
+        <!-- Cabeçalho da página -->
+        <div class="toolbar">
+          <div>
+            <h2>Vendas</h2>
+
+            <p class="muted">
+              Registre uma venda e atualize o estoque automaticamente.
+            </p>
+          </div>
+
+          <button
+            id="show-sale-form"
+            class="btn primary"
+          >
+            ＋ Nova venda
+          </button>
+        </div>
+
+        <!-- Formulário de venda -->
+        <form
+          id="sale-form"
+          class="content-card hidden"
+        >
+          <div class="section-heading">
+            <div>
+              <h3>Registrar venda</h3>
+
+              <p class="muted">
+                Selecione os produtos e suas quantidades.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="cancel-sale"
+              class="icon-btn"
+            >
+              ✕
+            </button>
+          </div>
+
+          <!-- Itens da venda -->
+          <div id="sale-lines"></div>
+
+          <button
+            id="add-sale-line"
+            type="button"
+            class="btn outline"
+          >
+            ＋ Adicionar item
+          </button>
+
+          <!-- Pagamento e total -->
+          <div class="sale-bottom">
+            <div>
+              <label>
+                Forma de pagamento
+
+                <select name="paymentMethod">
+                  <option value="pix">Pix</option>
+                  <option value="dinheiro">Dinheiro</option>
+                  <option value="credito">Cartão de crédito</option>
+                  <option value="debito">Cartão de débito</option>
+                  <option value="transferencia">
+                    Transferência
+                  </option>
+                </select>
+              </label>
+            </div>
+
+            <div class="sale-total">
+              <small>Total estimado</small>
+              <strong id="sale-total">R$ 0,00</strong>
+            </div>
+
+            <button
+              type="submit"
+              class="btn primary"
+            >
+              Finalizar venda
+            </button>
+          </div>
+
+          <p class="hint">
+            Observação: a API atual calcula o total e baixa o estoque.
+            A forma de pagamento ainda não é salva no banco.
+          </p>
+        </form>
+
+        <!-- Histórico de vendas -->
+        <div class="content-card">
+          <div class="section-heading">
+            <div>
+              <h3>Histórico de vendas</h3>
+
+              <p class="muted">
+                Vendas mais recentes primeiro.
+              </p>
+            </div>
+
+            <span id="sales-count" class="muted"></span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Venda</th>
+                  <th>Data</th>
+                  <th>Vendedor</th>
+                  <th>Itens</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+
+              <tbody id="sales-table">
+                <tr>
+                  <td colspan="5" class="empty">
+                    Carregando vendas...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rodapé -->
+      <footer>
+        Moda Store <span>•</span> Painel conectado à API
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- JavaScript principal -->
+  <script src="/app.js"></script>
+</body>
+</html>
