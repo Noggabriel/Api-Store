@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Moda Store API
 
 API REST para uma loja de roupas, construída com Node.js, Express, Sequelize, MySQL e JWT. Permite autenticar funcionários, cadastrar produtos/variações, acompanhar estoque, registrar vendas e consultar indicadores.
@@ -100,3 +101,6 @@ O registro de venda espera um JSON no formato `{'items':[{'productId':1,'quantit
 ## Front-end básico
 
 O front-end está na pasta `public/` e é servido pela própria API. Configure o `.env`, instale as dependências e execute `npm run dev`. Abra `http://localhost:3000`. O painel permite entrar/cadastrar conta, consultar indicadores, cadastrar/editar/excluir produtos, registrar vendas e consultar o histórico. O front usa os campos reais do modelo atual (`name`, `description`, `size`, `color`, `price`, `stock`). A API atual não persiste forma de pagamento; o campo aparece no front apenas como indicação visual.
+=======
+# Api-Store
+>>>>>>> 2068a3df01e0e8880386b40ad2f500e8787c4af1
